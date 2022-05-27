@@ -1,4 +1,5 @@
 # 웹 수업
 - 홈페이지 : https://limmiseon.github.io/web/
 
-linux, java, html, markup
+C, Jave, Linux, Github, Markdown,
+Html, MySQL

@@ -1,0 +1,45 @@
+div {
+  background-color: aquamarine;
+  height: 300px;
+}
+
+body {
+  background-color: black;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+p {
+  color: blanchedalmond;
+}
+
+/* class 셀렉터 */
+.red-text {
+  color: red;
+}
+
+.yellow-text {
+  color: yellow;
+}
+
+.big-size {
+  font-size: 50px;
+}
+
+.border {
+  border-style: solid ;
+  border-width: 1px;
+}
+
+/* 아이디 셀렉터 */
+#div1 {
+  background-color: bisque;
+}
+
+a {
+  text-decoration: none;
+  color: grey;
+}
+
+a:hover {
+  color: white;
+}
