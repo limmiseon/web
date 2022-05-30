@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    /* block : 가로로 꽉 참, inline : 자기자신의 크기를 가짐 */
+    span {
+      display: block;
+      width: 100px;
+      height: 50px;
+    }
+    /* div {
+      display: inline;
+    } */
+
+    /* inline-block : 크기를 설정할 수 있음 */
+    div.div1 {
+      margin: 25px;
+      padding: 25px;
+      background-color: yellow;
+      position: relative;
+      display: inline-block;
+      width: 100px;
+      height: 50px;
+    }
+    /* inline : 크기를 설정할 수 없음 */
+    /* absolute : 가장 가까운 position 속성이 static이 아닌 tag 기준 (그런 애가 없다면 화면 기준) */
+    /* relative : 원래 위치 기준 */
+    div.div2 {
+      display: inline;
+      position: absolute;
+      left: 30px;
+      top: 30px;
+      background-color: pink;
+    }
+  </style>
+  <!-- div.div1 -->
+  <div class="div1">div1</div>
+  <!-- .div2 -->
+  <div class="div2">div2</div>
+  <div>div</div>
+  <div>div</div>
+  <span>span</span>
+  <span>span</span>
+  <h1>h1</h1>
+  <h1>h1</h1>
+  <header>header</header>
+  <footer>footer</footer>
+
+  
+</body>
+</html>
