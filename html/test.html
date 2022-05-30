@@ -1,151 +1,20 @@
-
-<meta charset="utf-8" />
-
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- 사용하고자 하는 차트의 src 주소 입력 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	<style>
-	a:link{color : black;}
-	a:visited {color : black;}
-</style>
+    <title>Document</title>
 </head>
 <body>
-<table cellspacing=3 width=800 border=1>
-	<tr>
-		<td width=100><a href="http://192.168.23.93:8080/ch5/A_01_H.jsp" style="text-decoration: none">후보등록</a></td>
-		<td width=100><a href="http://192.168.23.93:8080/ch5/B_01_H.jsp" style="text-decoration: none">투표</a></td>
-		<td width=100 bgcolor="#00ffff"><a href="UIReportAll.jsp" style="text-decoration: none">개표결과</a></td>
-	</tr>
-</table>
-<h1>후보 별 득표율</h1>
-
-	<!-- canvas 태그를 이용해 차트를 그릴 영역 지정 -->
-    <canvas id="sb" style="width:800;"></canvas>
-    <script>
-	var nameArrSrp = new Array();
-	var pyoyulArrJsp = new Array();
-	
-		nameArrSrp.push('1. 김일동');
-		pyoyulArrJsp.push('40.0');
-	
-		nameArrSrp.push('2. 김이동');
-		pyoyulArrJsp.push('20.0');
-	
-		nameArrSrp.push('3. 김삼동');
-		pyoyulArrJsp.push('0.0');
-	
-		nameArrSrp.push('4. 김사동');
-		pyoyulArrJsp.push('13.33');
-	
-		nameArrSrp.push('5. 김오동');
-		pyoyulArrJsp.push('26.67');
-	
-	
-		<!-- 차트를 그릴 영역을 dom 요소로 가져온다. -->
-        var ctx = document.getElementById("sb").getContext('2d');
-		<!-- 차트를 생성한다. -->
-        var myChart = new Chart(ctx, {
-            type: 'horizontalBar', <!-- 차트의 종류 설정 -->
-            data: { <!-- 차트의 데이터 설정 -->
-				<!-- x축에 들어갈 이름들(Array) -->
-                labels: nameArrSrp,
-                <!-- 실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다. -->
-				datasets: [{
-                    label: '득표율', <!-- dataset의 이름 -->
-					<!-- dataset의 값(Array) -->
-                    data: pyoyulArrJsp,
-                    <!-- dataset의 배경색(rgba값을 string으로 표현) -->
-					backgroundColor: [
-                        'rgba(251, 147, 175, 0.7)',
-                        'rgba(242, 252, 177, 0.7)',
-                        'rgba(147, 251, 216, 0.7)',
-                        'rgba(199, 147, 251, 0.7)',
-                        'rgba(249, 158, 113, 0.7)',
-                        'rgba(113, 192, 249, 0.7)',
-                        'rgba(249, 113, 113, 0.7)',
-                        'rgba(177, 234, 252, 0.7)',
-                        'rgba(84, 160, 248, 0.7)',
-                        'rgba(199, 177, 252, 0.7)',
-						'rgba(251, 147, 175, 0.7)',
-                        'rgba(249, 251, 147, 0.7)',
-                        'rgba(147, 251, 216, 0.7)',
-                        'rgba(199, 147, 251, 0.7)',
-                        'rgba(249, 158, 113, 0.7)',
-                        'rgba(113, 192, 249, 0.7)',
-                        'rgba(177, 234, 252, 0.7)',
-                        'rgba(242, 252, 177, 0.7)',
-                        'rgba(251, 147, 175, 0.7)',
-                        'rgba(199, 177, 252, 0.7)',
-						'rgba(199, 147, 251, 0.7)',
-                        'rgba(249, 158, 113, 0.7)',
-                        'rgba(113, 192, 249, 0.7)',
-                        'rgba(177, 234, 252, 0.7)',
-                        'rgba(242, 252, 177, 0.7)',
-                        'rgba(251, 147, 175, 0.7)',
-                        'rgba(199, 177, 252, 0.7)'
-                    ],
-					<!-- dataset의 선 색(rgba값을 string으로 표현) -->
-                    borderColor: [
-                        'rgba(251, 147, 175, 1)',
-                        'rgba(242, 252, 177, 1)',
-                        'rgba(147, 251, 216, 1)',
-                        'rgba(199, 147, 251, 1)',
-                        'rgba(249, 158, 113, 1)',
-                        'rgba(113, 192, 249, 1)',
-                        'rgba(249, 113, 113, 1)',
-                        'rgba(177, 234, 252, 1)',
-                        'rgba(84, 160, 248, 1)',
-                        'rgba(199, 177, 252, 1)',
-						'rgba(251, 147, 175, 1)',
-                        'rgba(249, 251, 147, 1)',
-                        'rgba(147, 251, 216, 1)',
-                        'rgba(199, 147, 251, 1)',
-                        'rgba(249, 158, 113, 1)',
-                        'rgba(113, 192, 249, 1)',
-                        'rgba(177, 234, 252, 1)',
-                        'rgba(242, 252, 177, 1)',
-                        'rgba(251, 147, 175, 1)',
-                        'rgba(199, 177, 252, 1)'
-                    ],
-                    borderWidth: 2 <!-- dataset의 테두리 선 두께(Number) -->
-                }]
-            },
-            options: { <!-- 차트의 설정(object) -->
-				responsive: false,
-                scales: { <!-- 축에 관한 설정(object) -->
-                    xAxes: [{ <!-- y축에 대한 설정(object) -->
-                        ticks: { <!-- 시작을 0부터 하도록 설정(최소값이 0보다 크더라도)(boolean) -->
-							suggestedMin: 0,
-							suggestedMax: 100,
-						}
-                    }]
-                },
-				legend: {
-					display: false
-				},
-            }
-        });
-        const ctxx = document.getElementByI('myChart');
-        const myChr = new Chart(
-            ctxx,
-            config
-        );
-
-        function clickHandler(click){
-            const points = myChr.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
-            if (points.length) {
-                const firstPoint = points[0];
-                console.log(points)
-                console.log(firstPoint)
-            }
-        }
-        ctxx.onclick = clickHandler;
-
-    </script>
+    <form>
+        <input type="radio" id="coffee" name="beverage" value="coffee">
+        <label for="coffee">coffee</label><br>
+        <input type="radio" id="juice" name="beverage" value="juice">
+        <label for="juice">juice</label><br>
+        <input type="radio" id="tea" name="beverage" value="tea">
+        <label for="tea">tea</label>
+      </form>
+    
 </body>
 </html>
