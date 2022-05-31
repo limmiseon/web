@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .container {
+      text-align: center;
+    }
+
+    .box {
+      background-color: rgb(121, 118, 118);
+      color: white;
+      display: inline-block;
+      border: 1px black solid;
+      padding: 20px;
+      width: 200px;
+      margin: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+  </style>
+  <div class="container" id="container">
+    <button class="box" id="id_html" onclick="changeHtml()">html</button>
+    <button class="box" id="id_css" onclick="changeCss()">css</button>
+    <button class="box" id="id_javascript" onclick="changeJavascript()">javascript</button>
+  </div>
+
+  <script>
+    function reset() {
+      document.querySelector('#id_html').style.cssText=`color: white; background-color: rgb(121, 118, 118);`
+      document.querySelector('#id_css').style.cssText=`color: white; background-color: rgb(121, 118, 118);`
+      document.querySelector('#id_javascript').style.cssText=`white: background-color: rgb(121, 118, 118);`
+    }
+
+  function changeHtml() {
+    reset();
+    let $id_html = document.getElementById('id_html');
+    $id_html.style.color = 'black';
+    $id_html.style.backgroundColor = 'white';
+  }
+
+  function changeCss() {
+    reset();
+    let $id_css = document.getElementById('id_css');
+    $id_css.style.color = 'black';
+    $id_css.style.backgroundColor = 'white';
+  }
+
+  function changeJavascript() {
+    reset();
+    let $id_javascript = document.getElementById('id_javascript');
+    $id_javascript.style.color = 'black';
+    $id_javascript.style.backgroundColor = 'white';
+  }
+</script>
+</body>
+</html>

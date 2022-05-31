@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    #font {
+      font-size:80px;
+    }
+
+    #container {
+      display: none;
+      position: relative;
+      padding-top: 250px;
+      text-align: center;
+    }
+
+    .button {
+      border: 2px solid;
+      font-size: 30px;
+      background-color: transparent;
+      cursor: pointer;
+      margin: 10px;
+      width: 100px;
+    }
+
+    .button1 {border-color: red;}
+    .button2 {border-color: blue;}
+    .button3 {border-color: green;}
+
+  </style>
+
+  <div id="container">
+    <div id="font"></div>
+    <button class="button button1" onclick="changeRed()">빨강</button>
+    <button class="button button2" onclick="changeBlue()">파랑</button>
+    <button class="button button3" onclick="changeGreen()">초록</button>
+  </div>
+
+  <script>
+    let num = String(prompt('값을 입력해 주세요'));
+    
+    if (num == '') {
+      num = String(prompt('텍스트값을 입력해 주세요'));
+    } else {
+      document.getElementById("font").innerHTML = num;
+      document.getElementById("container").style.display ='block';
+    }
+
+    function changeRed() {
+      let $font = document.getElementById('font');
+      alert('빨간색으로 변경됩니다.');
+      $font.style.color = 'red';
+    }
+
+    function changeBlue() {
+      let $font = document.getElementById('font');
+      alert('파란색으로 변경됩니다.');
+      $font.style.color = 'blue';
+    }
+
+    function changeGreen() {
+      let $font = document.getElementById('font');
+      alert('초록색으로 변경됩니다.');
+      $font.style.color = 'green';
+    }
+  </script>
+
+</body>
+</html>
