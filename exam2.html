@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let num = Number(prompt('숫자 입력'));
+
+    if (isNaN(num)) {
+      alert('숫자를 입력해 주세요')
+    } else {
+      if ((1 <= num || num <= 100) === flase) {
+        alert('1 이상 100 이하를 넣어주세요')
+      } else {
+        for (let i = 1; i <= 100; i++) {
+          // log + 엔터
+          console.log(i);
+        }
+        alert('완료되었습니다');
+      }
+    }
+  </script>
+</body>
+</html>
