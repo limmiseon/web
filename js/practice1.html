@@ -45,12 +45,12 @@
   </div>
 
   <script>
-    let num = String(prompt('값을 입력해 주세요'));
+    let str = String(prompt('값을 입력해 주세요'));
     
-    if (num == '') {
-      num = String(prompt('텍스트값을 입력해 주세요'));
+    if (str == '') {
+      str = String(prompt('텍스트값을 입력해 주세요'));
     } else {
-      document.getElementById("font").innerHTML = num;
+      document.getElementById("font").innerHTML = str;
       document.getElementById("container").style.display ='flex';
     }
 
