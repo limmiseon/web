@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <style>
+    div {
+      width: 300px;
+    }
+    button {
+      display: inline-block;
+      position: relative;
+      left: 40px;
+      margin: 10px;
+      padding: 0px 20px;
+    }
+
+    table, tr, td {
+     border: 1px black solid;
+    }
+  </style>
+
+  <div>
+    <form>
+      <table>
+        <tr>
+          <td>아이디</td>
+          <td><input type="text" name="myID"></td>
+        </tr>
+        <tr>
+          <td>비밀번호</td>
+          <td><input type="text" id="myPasswd"></td>
+        </tr>
+        <tr>
+          <td>성별</td>
+          <td><input type="radio" name="gender" value="m">남자 <input type="radio" name="gender" value="w">여자</td>
+        </tr>
+        <tr>
+          <td>직업</td>
+          <td>
+            <select name="job">
+              <option key="default-empty" hidden></option>
+              <option value="백수">백수</option>
+              <option value="개발자">개발자</option>
+              <option value="선생님">선생님</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>취미</td>
+          <td>
+            <input type="checkbox" name="hobby">개발
+            <input type="checkbox" name="hobby">게임
+            <input type="checkbox" name="hobby">낚시
+            <br>
+            <input type="checkbox" name="hobby">운동
+            <input type="checkbox" name="hobby">독서
+            <input type="checkbox" name="hobby">음악감상
+          </td>
+        </tr>
+      </table>
+      <br>
+      <button type="reset">취소</button>
+      <button id="signUp">회원가입</button>
+    </form>
+  </div>
+
+  <script>
+    let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
+    $('#signUp').click(function () {
+      if (regEmail.test($('input[name=myID]').val()) === false) {
+        alert('아이디는 이메일형식이어야 합니다.');
+        return false;
+      } else if ($("#myPasswd").val().length < 5) {
+        alert('비밀번호는 5자 이상이어야 합니다.');
+        return false;
+      } else if (!$('input:radio[name=gender]').is(":checked")) {
+        alert('성별을 선택해 주세요.');
+        return false;
+      } else if ($("select[name=job]").val() == '') {
+        alert('직업을 선택해 주세요');
+        return false;
+      } else if ($("input:checkbox[name=hobby]:checked").length < 3) {
+        alert('취미는 3개 이상 선택해주세요.');
+        return false;
+      } else {
+        alert('회원가입 완료');
+      }
+    });
+  </script>
+</body>
+</html>
