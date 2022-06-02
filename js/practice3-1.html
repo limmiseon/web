@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    div {
+      display: inline-block;
+      border: 1;
+      width: 150px;
+      height: 70px;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    .box {
+      background-color: skyblue;
+      color: white;
+    }
+
+    .selected-box {
+      background-color: white;
+      color: black;
+    }
+  </style>
+
+
+  <div class="box" onmouseover="changeStyle(this)">html</div>
+  <div class="box" onmouseover="changeStyle(this)">css</div>
+  <div class="box" onmouseover="changeStyle(this)">javascript</div>
+
+  <script>
+    function changeStyle($el) {
+      $divs = document.querySelectorAll('div');
+      let divList = [...$divs];
+
+      divList.map(div => div.className = div === $el ? 'selected-box' : 'box');
+    }
+
+  </script>
+</body>
+
+</html>
