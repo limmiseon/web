@@ -29,25 +29,26 @@
 }
 
 #score {
+  display: inline-block;
+  border: 1px black solid;
+  padding: 0 10px;
+  background-color:rgb(255, 255, 255, 0.5);/*까만색(0,0,0) 20% 불투명도*/
+  
   position: absolute;
-  top: 0px;
-  left: 10 px;
+  top: 5px;
+  left: 5px;
+  font-size: xx-large;
+  font-family: 'Gaegu', cursive;
 }
 
 .background {
-  position: absolute;
-  background-image: url('../assets/back.jpg');
-  width: 300%;
-  height: 100%;
- //animation: slide 3s linear infinite;
+  width: 1200px;
+  height: 600px;
+  background: url('../assets/back.jpg') 0 center / 1200px repeat-x;
+  animation: movebg 3s linear infinite;
 }
 
-@keyframes slide {
-  from {
-    left: 0px; 
-  }
- 
-  to {
-    left: -70%;
-  }
+@keyframes movebg {
+  0% {background-position: 0 center;}
+  100% {background-position: -1200px center;}
 }
