@@ -7,15 +7,59 @@
   <title>Document</title>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js"></script>
 </head>
 <body>
   <div class="container">
     <img id="metamong" src="assets/metamong.gif" alt="metamong">
+    <img id="poketball" src="assets/poketball.gif" alt="poketball">
+    <div id="score">점수 : 0</div>
   </div>
 
   <script>
     let isJumping = false;
+    let isGameOver = false;
+    let score = 0;
+
+    function metamongDown() {
+      if (isGameOver) {
+        return;
+      }
+
+      let metamongRight = 130;
+
+      let poketballLeft = Number($('#poketball').css('left').replace('px', ''));
+
+      if (poketballLeft <= metamongRight && isJumping == false) {
+        console.log('die');
+        // alert('Game Over');
+        $('#poketball').stop();
+        isGameOver = true;
+      }
+    }
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+    }
+
+    function poketballStart() {
+      let speed = getRandomInt(1000, 2000); // 1~2초 사이
+      let respawnTime = getRandomInt(1000, 2000); // 1~2초 사이
+    
+      $('#poketball').animate({ left: '-100px'}, speed, function () {
+        if (isGameOver == false) {
+            score += 100;
+            $('#score').text(`점수 : ${score}`);
+        }
+
+        // 왼쪽 끝까지 가면 초기 위치로 이동
+        $('#poketball').css('right', '-100px').css('left', '');
+
+        // 1초 후에 다시 출발
+        setTimeout(poketballStart, respawnTime);
+      });
+    }
 
     function jump() {
       // 연타 방지
@@ -24,8 +68,8 @@
       }
 
       isJumping = true;
-      $('#metamong').animate({ bottom : '+=200px'}, 100)
-        .animate({ bottom : '-=200px'}, 500, function () {
+      $('#metamong').animate({ bottom : '+=250px'}, 130)
+        .animate({ bottom : '-=250px'}, 700, function () {
         isJumping = false;
       });
     }
@@ -39,6 +83,11 @@
             break;
         }
       });
+
+      // 굼바 출발
+      poketballStart();
+      // 충돌 체크
+      setInterval(metamongDown, 10);
     });
   </script>
 </body>
