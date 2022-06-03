@@ -65,31 +65,28 @@
   <script>
     $('#all').click(function() {
       // 확인 체크박스 클릭
-      if ($('input[name=all]:checkbox').is(':checked')) {
+      $('input[name=chk]').prop('checked', this.checked);
+    });
+    // 코드 줄이기
+     /*  if ($('input[name=all]:checked').is(':checked')) {
         $('input[name=chk]:checkbox').prop('checked', true);
       } else {
         $('input[name=chk]:checkbox').prop('checked', false);
       }
-    });
+    }); */
 
     $('#log_button').click(function() {
       // 체크된 것이 있는지?
-      if ($('input:checkbox[name=chk]:checked').length == 0) {
+      if ($('input[name=chk]:checked').length == 0) {
         alert('선택 없음');
       } else {
-        $('input[name=chk]:checkbox').each(function () {
-          // 개별 체크
-          if ($(this).is(':checked')) {
-            // 체크박스에서 가장 가까운 tr 태그 찾기
-            let row = $(this).closest('tr');
-            // 그 중에서 td 태그 찾아서 1번 인덱스 값 가져오기
-            let columns = row.find('td').eq(1);
+        $('input[name=chk]:checked').each(function () {
+            let row = $(this).closest('tr'); // 체크박스에서 가장 가까운 tr 태그 찾기
+            let columns = row.find('td').eq(1); // 그 중에서 td 태그 찾아서 1번 인덱스 값 가져오기
             console.log(columns.html()); // innerHTML 값 추출
-
-          }
+          });
+        }
       });
-     }
-    });
   </script>
 </body>
 </html>
