@@ -1,6 +1,7 @@
 .container {
   border: 1px black solid;
-  height: 90vh;
+  width: 1200px;
+  height: 600px;
   position: relative;
 }
 
@@ -17,4 +18,36 @@
   width: 100px;
   bottom: 20px;
   right: 50px;
+}
+
+#killer {
+  position: absolute;
+  width: 100px;
+  left: 120px;
+  bottom: 30px;
+  display: none;
+}
+
+#score {
+  position: absolute;
+  top: 0px;
+  left: 10 px;
+}
+
+.background {
+  position: absolute;
+  background-image: url('../assets/back.jpg');
+  width: 300%;
+  height: 100%;
+ //animation: slide 3s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    left: 0px; 
+  }
+ 
+  to {
+    left: -70%;
+  }
 }

@@ -10,15 +10,47 @@
 </head>
 <body>
   <div class="container">
+    <div class="background"></div>
+    <div id="score">점수 : 0</div>
     <img id="metamong" src="assets/metamong.gif" alt="metamong">
     <img id="poketball" src="assets/poketball.gif" alt="poketball">
-    <div id="score">점수 : 0</div>
+    <img id="killer" src="assets/killer.gif" alt="killer">
   </div>
+
+  <!-- <div>
+    시작 화면
+  </div>
+
+  <div>
+    게임 오버 화면
+  </div> -->
 
   <script>
     let isJumping = false;
     let isGameOver = false;
     let score = 0;
+    let isKillerStart = false;
+
+    function poketballDowm() {
+      let poketballLeft = Number($('#poketball').css('left').replace('px', ''));
+      let KillerRight = Number($('#killer').css('left').replace('px', '')) + 100;
+
+      if (isKillerStart && poketballLeft <= KillerRight) {
+        score += 200;
+        setScore(score);
+
+        // 킬러 원래자리로
+        killerInit();
+        isKillerStart = false;
+
+        // 포켓볼 없애고
+        $('#poketball').stop().hide();
+        poketballInit();
+
+        // 포켓볼 출현
+        setTimeout(poketballStart, getRandomInt(500, 1000));
+      }
+    }
 
     function metamongDown() {
       if (isGameOver) {
@@ -50,14 +82,28 @@
       $('#poketball').animate({ left: '-100px'}, speed, function () {
         if (isGameOver == false) {
             score += 100;
-            $('#score').text(`점수 : ${score}`);
+            setScore(score);
         }
 
         // 왼쪽 끝까지 가면 초기 위치로 이동
-        $('#poketball').css('right', '-100px').css('left', '');
+        poketballInit();
 
         // 1초 후에 다시 출발
         setTimeout(poketballStart, respawnTime);
+      });
+    }
+
+    function killerStart() {
+      if (isKillerStart) {
+        return;
+      }
+
+      // 발사
+      isKillerStart = true;
+      $('#killer').show().animate({ left : '1000px' }, 1000, function () {
+        // 원래 자리로 이동
+        KillerInit();
+        isKillerStart = false;
       });
     }
 
@@ -74,12 +120,28 @@
       });
     }
 
+    function setScore(score) {
+     $('#score').text(`점수 : ${score}`);
+    }
+
+    function poketballInit() {
+      $('#poketball').css('right', '-150px').css('left', '').show();
+    }
+
+    function killerInit() {
+      $('#killer').css('left', '220px').stop().hide();
+    }
+
     // onload
     $(function () {
       $('body').keydown(function (event) {
         switch (event.key) {
           case ' ':
             jump();
+            break;
+
+          case 'Control':
+            killerStart();
             break;
         }
       });
@@ -88,6 +150,8 @@
       poketballStart();
       // 충돌 체크
       setInterval(metamongDown, 10);
+      // 포켓볼 죽었나 체크
+      setInterval(poketballDowm, 10);
     });
   </script>
 </body>
