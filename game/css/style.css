@@ -6,8 +6,15 @@
 
 #metamong {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  bottom: 50px;
+  width: 100px;
+  height: 100px;
+  bottom: 30px;
   left: 50px;
+}
+
+#poketball {
+  position: absolute;
+  width: 100px;
+  bottom: 20px;
+  right: 50px;
 }
