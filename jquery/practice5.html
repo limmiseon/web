@@ -82,9 +82,9 @@
           // 개별 체크
           if ($(this).is(':checked')) {
             // 체크박스에서 가장 가까운 tr 태그 찾기
-            var row = $(this).closest('tr');
+            let row = $(this).closest('tr');
             // 그 중에서 td 태그 찾아서 1번 인덱스 값 가져오기
-            var columns = row.find('td').eq(1);
+            let columns = row.find('td').eq(1);
             console.log(columns.html()); // innerHTML 값 추출
 
           }
