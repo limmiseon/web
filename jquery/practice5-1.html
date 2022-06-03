@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery 기초9</title>
+  <style>
+    .container {
+      text-align: center;
+    }
+
+    table {
+      display: inline-block;
+    }
+
+    table,
+    tr,
+    th,
+    td {
+      border: 1px solid black;
+      border-spacing: 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <table>
+      <tr>
+        <th><input type="checkbox" class="checkAll">확인</th>
+        <th>제목</th>
+        <th>글쓴시간</th>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="checkOne"></td>
+        <td class="title">1111</td>
+        <td class="wDate">11:11:00</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="checkOne"></td>
+        <td class="title">2222</td>
+        <td class="wDate">11:12:00</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="checkOne"></td>
+        <td class="title">3333</td>
+        <td class="wDate">11:13:00</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="checkOne"></td>
+        <td class="title">4444</td>
+        <td class="wDate">11:14:00</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="checkOne"></td>
+        <td class="title">5555</td>
+        <td class="wDate">11:15:00</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="checkOne"></td>
+        <td class="title">6666</td>
+        <td class="wDate">11:16:00</td>
+      </tr>
+    </table>
+    <br>
+    <br>
+    <button class="btn">로그</button>
+  </div>
+
+  <script>
+    $(function () {
+      // 전체 체크에 따른 단일 체크 제어
+      $('.checkAll').click(function () {
+        $('.checkOne').prop('checked', this.checked);
+      });
+
+      // 단일 체크에 따른 전체 체크 제어
+      $(".checkOne").click(function () {
+        if ($('.checkOne:checked').length === $('.checkOne').length) {
+          $('.checkAll').prop('checked', true);
+        } else {
+          $('.checkAll').prop('checked', false);
+        }
+      });
+
+      // 체크한 제목 로그 찍기
+      $(".btn").click(function () {
+        $('.checkOne:checked').each(function () {
+          console.log($(this).parent().next().text());
+          //console.log($(this).closest("tr").children('.title').text());   // closest() - 부모 중 조건에 해당하는 가장 가까운 요소
+          //console.log($(this).parent().parent().children('td:eq(1)').text());
+          //console.log($(this).parents().children('td:eq(1)').text());
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
