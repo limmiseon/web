@@ -1,0 +1,13 @@
+.container {
+  border: 1px black solid;
+  height: 90vh;
+  position: relative;
+}
+
+#metamong {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 50px;
+  left: 50px;
+}
