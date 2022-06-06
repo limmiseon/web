@@ -5,6 +5,24 @@
   position: relative;
 }
 
+.gameStart {
+  background: url('../assets/gameStart.PNG');
+  width: 1200px;
+  height: 600px;
+  z-index: 1;
+  position: absolute;
+}
+
+.gameEnd {
+  background: url('../assets/gameEnd.PNG');
+  width: 1200px;
+  height: 600px;
+  z-index: 1;
+  position: absolute;
+  display: none;
+
+}
+
 #metamong {
   position: absolute;
   width: 100px;
@@ -41,7 +59,7 @@
   font-family: 'Gaegu', cursive;
 }
 
-.background {
+.gameBackground {
   width: 1200px;
   height: 600px;
   background: url('../assets/back.jpg') 0 center / 1200px repeat-x;
