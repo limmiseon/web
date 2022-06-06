@@ -1,0 +1,72 @@
+.container {
+    border: 1px black solid;
+    width: 1200px;
+    height: 600px;
+    position: relative;
+  }
+
+  .gameStart {
+    background: url('../assets/gameStart.PNG');
+    width: 1200px;
+    height: 600px;
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .gameEnd {
+    background: url('../assets/gameEnd.PNG');
+    width: 1200px;
+    height: 600px;
+    z-index: 1;
+    position: absolute;
+    display: none;
+  }
+  
+  #metamong {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 30px;
+    left: 50px;
+  }
+  
+  #poketball {
+    position: absolute;
+    width: 100px;
+    bottom: 20px;
+    right: 50px;
+  }
+  
+  #killer {
+    position: absolute;
+    width: 100px;
+    left: 120px;
+    bottom: 30px;
+    display: none;
+  }
+  
+  #score {
+    display: inline-block;
+    border: 1px black solid;
+    padding: 0 10px;
+    background-color:rgb(255, 255, 255, 0.5);/*까만색(0,0,0) 20% 불투명도*/
+    
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: xx-large;
+    font-family: 'Gaegu', cursive;
+  }
+  
+  .background {
+    width: 1200px;
+    height: 600px;
+    background: url('../assets/back.jpg') 0 center / 1200px repeat-x;
+    animation: movebg 3s linear infinite;
+  }
+  
+  @keyframes movebg {
+    0% {background-position: 0 center;}
+    100% {background-position: -1200px center;}
+  }
