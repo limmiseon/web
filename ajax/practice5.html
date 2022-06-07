@@ -44,10 +44,10 @@
 </head>
 <body onload="loadData()">
   <script>
-    function moveView(arr) {
-      console.log(arr);
+    function moveView(arrId) {
+      console.log(arrId);
       // 페이지 이동
-      document.location.href = `practice5_view.html?${arr}`;
+      document.location.href = `practice5_view.html?id=${arrId}`;
     }
 
     function loadData() {
@@ -61,7 +61,7 @@
           for (let i = 0; i < results.length; i++) {
             let arr = results[i];
             console.log(arr.title);
-            $list.append(`<div class="card" onclick="moveView(${arr})">
+            $list.append(`<div class="card" onclick="moveView(${arr.id})">
               <div class="container">
                 <img src="https://image.tmdb.org/t/p/w500${arr.poster_path}">
                 <h4><b>${arr.title}</b></h4>
