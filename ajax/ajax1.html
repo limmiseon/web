@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function loadDoc() {
+      // XMLHttpRequest 객체 생성
+      let xhttp = new XMLHttpRequest();
+
+      // 응답 왔을 때 콜백 함수 정의
+      xhttp.onreadystatechange = function () {
+        // this.readyState == 4 : 정상 완료 (응답이 왔으면)
+        // this.status == 200 : 서버 입장에서 성공이라고 정했음
+        // this.status == 404 : 서버 입장에서 파일을 못 찾음
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML = this.responseText;
+        }
+      };
+
+      // 통신 방식이나 대상을 설정
+      // 방식 : GET(읽기), POST(쓰기), PATCH, DELETE, ...
+      xhttp.open("GET", "ajax_info.txt", true);
+      // 실행
+      xhttp.send();
+    }
+  </script>
+  <div id="demo"></div>
+  <button onclick="loadDoc()">get data</button>
+</body>
+</html>
