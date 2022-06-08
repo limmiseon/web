@@ -16,12 +16,10 @@
       color: white;
     }
 
-    /* On mouse-over, add a deeper shadow */
     .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
 
-    /* Add some padding inside the card container */
     .container {
       padding: 2px 16px;
     }
@@ -44,10 +42,10 @@
 </head>
 <body onload="loadData()">
   <script>
-    function moveView(arrId) {
-      console.log(arrId);
+    function moveView(searchId) {
+      console.log(searchId);
       // 페이지 이동
-      document.location.href = `practice5_view.html?id=${arrId}`;
+      document.location.href = `practice5_view.html?id=${searchId}`;
     }
 
     function loadData() {
@@ -56,15 +54,15 @@
         .then(jsonArray => {
           let $list = $('#list');
           // console.log(jsonArray.results);
-          let results = jsonArray.results;
+          let movieArr = jsonArray.results; // 배열 가져오기
           
-          for (let i = 0; i < results.length; i++) {
-            let arr = results[i];
-            console.log(arr.title);
-            $list.append(`<div class="card" onclick="moveView(${arr.id})">
+          for (let i = 0; i < movieArr.length; i++) {
+            let movie = movieArr[i];
+            console.log(movie.title);
+            $list.append(`<div class="card" onclick="moveView(${movie.id})">
               <div class="container">
-                <img src="https://image.tmdb.org/t/p/w500${arr.poster_path}">
-                <h4><b>${arr.title}</b></h4>
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
+                <h4><b>${movie.title}</b></h4>
               </div>
               </div>`);
         }

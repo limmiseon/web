@@ -16,12 +16,10 @@
       background-color: rgb(243, 241, 241);
     }
 
-    /* On mouse-over, add a deeper shadow */
     .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
 
-    /* Add some padding inside the card container */
     .container {
       padding: 2px 16px;
     }
@@ -45,10 +43,10 @@
 <body>
   <script>
     $(function () {
-      const queryString = window.location.search; // url 뒤 ?부터 (ex: '?id=1')
+      const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const id = urlParams.get('id');
-      loadData(id);
+      const searchId = urlParams.get('id');
+      loadData(searchId);
     });
 
     function loadData(searchId) {
@@ -56,18 +54,18 @@
         .then(response => response.json())
         .then(jsonArray => {
           let $list = $('#list');
-          let results = jsonArray.results;
+          let movieArr = jsonArray.results;
           
-          for (let i = 0; i < results.length; i++) {
-            let arr = results[i];
-            if (arr.id == searchId) {
-                console.log(arr.title);
+          for (let i = 0; i < movieArr.length; i++) {
+            let movie = movieArr[i];
+            if (movie.id == searchId) {
+                console.log(movie.title);
                 $list.append(`<div class="card">
                 <div class="container">
-                    <h4><b>${arr.title}</b></h4>
-                    <img src="https://image.tmdb.org/t/p/w500${arr.poster_path}">
+                    <h4><b>${movie.title}</b></h4>
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
                     <hr>
-                    ${arr.overview}<br><br>
+                    ${movie.overview}<br><br>
                 </div>
                 </div>`);
             }
