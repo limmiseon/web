@@ -18,7 +18,7 @@ public class SilencePlace {
 		
 		for (int i = 0; i < (N * 2); i++) {
 			trees.add(scanner.nextInt());
-        }
+		}
 
 		for(int i = 0; i < (N * 2); i+=2) {
 			double noisy = Math.pow(R, 2);
