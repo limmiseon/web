@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <style>
+    table, tr, th, td {
+      border: 1px black solid;
+    }
+
+    table {
+      width: 600px;
+    }
+  </style>
+  
+  <table>
+    <tr>
+      <th>
+        <input type="checkbox" name="all" id="all">확인
+      </th>
+      <th>제목</th>
+      <th>글쓴시간</th>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="chk"></td>
+      <td id="subject">1111</td>
+      <td>11:11:11</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="chk"></td>
+      <td>2222</td>
+      <td>11:11:11</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="chk"></td>
+      <td>3333</td>
+      <td>11:11:11</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="chk"></td>
+      <td>4444</td>
+      <td>11:11:11</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="chk"></td>
+      <td>5555</td>
+      <td>11:11:11</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="chk"></td>
+      <td>6666</td>
+      <td>11:11:11</td>
+    </tr>
+  </table>
+
+  <div>
+    <input id="log_button" type="button" value="로그">
+  </div>
+
+  <script>
+    $('#all').click(function() {
+      // 확인 체크박스 클릭
+      $('input[name=chk]').prop('checked', this.checked);
+    });
+    // 코드 줄이기
+     /*  if ($('input[name=all]:checked').is(':checked')) {
+        $('input[name=chk]:checkbox').prop('checked', true);
+      } else {
+        $('input[name=chk]:checkbox').prop('checked', false);
+      }
+    }); */
+
+    $('#log_button').click(function() {
+      // 체크된 것이 있는지?
+      if ($('input[name=chk]:checked').length == 0) {
+        alert('선택 없음');
+      } else {
+        $('input[name=chk]:checkbox').each(function () {
+          // 개별 체크
+          if ($(this).is(':checked')) {
+            // 체크박스에서 가장 가까운 tr 태그 찾기
+            let row = $(this).closest('tr');
+            // 그 중에서 td 태그 찾아서 1번 인덱스 값 가져오기
+            let columns = row.find('td').eq(1);
+            console.log(columns.html()); // innerHTML 값 추출
+
+          }
+      });
+     }
+    });
+  </script>
+</body>
+</html>
