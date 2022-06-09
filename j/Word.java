@@ -6,6 +6,9 @@ public class Word {
 		
 		System.out.println(word.isVowel(0));
 		System.out.println(word.isVowel(1));
+		System.out.println(word.isVowel(2));
+		System.out.println(word.isVowel(3));
+		System.out.println(word.isVowel(4));
 	}
 	
 	private String letters;
@@ -16,12 +19,9 @@ public class Word {
 	
 	// i 번째 글자가 모음인지 ( a, i, u, e, o )
 	public boolean isVowel(int i) {
-		String str_i = letters.substring(i, i + 1);
+		String strIndex = letters.substring(i, i + 1);
+		String vowel = "aiueo";
 		
-		if (str_i.equals("a") || str_i.equals("i") || str_i.equals("u") || str_i.equals("e") || str_i.equals("o")) {
-			return true;
-		} else {
-			return false;
-		}
+		return vowel.contains(strIndex);
 	}
 }
