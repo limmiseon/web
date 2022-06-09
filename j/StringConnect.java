@@ -18,7 +18,7 @@ public class StringConnect {
 		
 		System.out.printf("Hello ");
 		for (int i=0; i<inputNum; i++) {
-			System.out.printf("%s", inputStr[i]);
+			System.out.printf(inputStr[i]);
 		
 			if (i == (inputNum-1)) {
 				System.out.printf(".");
